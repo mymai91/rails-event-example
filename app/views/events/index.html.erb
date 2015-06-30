@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Event</h1>
+  <ul>
+    <% if user_signed_in? %>
+      <li><%= link_to 'Create Event', new_event_path %></li>
+    <% end %>
+  </ul>
+  <%= will_paginate %>
+    <ul>
+      <% @events.each do |event| %>
+        <li>
+          <h3><%= event.name %></h3>
+          <p><%= event.description %></p>
+          <p>
+            <%= image_tag(event.picture_url, :width =>600) if event.picture.present? %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  <%= will_paginate %>
+</div>
